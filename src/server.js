@@ -18,7 +18,7 @@ const server = http.createServer((req, res) => {
       email: 'jhondoe@example.com'
     })
 
-    return res.end('Criação de usuários');
+    return res.writeHead(201).end();
   }
 
 
