@@ -11,14 +11,20 @@ const server = http.createServer(async (req, res) => {
 
 
   const route = routes.find(route => {
-    return route.method === method && route.path === url;
+    console.log(route.method)
+    console.log(route.path)
+    console.log(url);
+    return route.method === method && route.path.test(url);
   })
 
+  console.log(route)
+
   if(route) {
+    const routeParams = req.url.match(route.path);
+    console.log(routeParams)
     return route.handler(req, res);
   }
 
-  console.log(route)
 
 
   return res.end('Hello test')
